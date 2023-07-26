@@ -1,11 +1,18 @@
 import moment from "moment/moment";
 import css from "./Layout.module.css";
 import { BiSearch } from "react-icons/bi";
+import Sidebar from "../Sidebar/Sidebar";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 const Layout = () => {
+
+  const {pathname} = useLocation()
+
   return (
     <div className={css.container}>
-      <div>ss</div>
+      <Sidebar/>
+
+      {pathname === "/" && <Navigate to="/dashboard"/>}
 
       <div className={css.dashboard}>
         <div className={css.topBaseGradients}>
@@ -13,6 +20,7 @@ const Layout = () => {
           <div className="gradient-orange"></div>
           <div className="gradient-blue"></div>
         </div>
+
         <div className={css.header}>
           <span>{moment().format("dddd, Do MMM YYYY")}</span>
           <div className={css.searchBar}>
@@ -26,6 +34,11 @@ const Layout = () => {
               <span>emikot321@gmail.com</span>
             </div>
           </div>
+
+
+          </div>
+          <div className={css.content}>
+            <Outlet/>
         </div>
       </div>
     </div>
