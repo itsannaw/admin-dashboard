@@ -1,3 +1,4 @@
+import Statistics from '../../components/Statistics/Statistics';
 import { cardsData, groupNumber } from '../../data';
 import css from './Dashboard.module.css';
 
@@ -33,6 +34,7 @@ const Dashboard = () => {
                         }
                 </div>
             </div>
+                <Statistics/>
         </div>
         <div className={css.orders}>
 
