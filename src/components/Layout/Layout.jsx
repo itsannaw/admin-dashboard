@@ -6,13 +6,17 @@ import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 const Layout = () => {
 
-  const {pathname} = useLocation()
+  const { pathname } = useLocation()
+
 
   return (
     <div className={css.container}>
-      <Sidebar/>
+      <Sidebar />
 
-      {pathname === "/" && <Navigate to="/dashboard"/>}
+
+      {/* making the dashboard as the default route */}
+      {pathname === "/" && <Navigate to="/dashboard" />}
+
 
       <div className={css.dashboard}>
         <div className={css.topBaseGradients}>
@@ -22,11 +26,14 @@ const Layout = () => {
         </div>
 
         <div className={css.header}>
+
           <span>{moment().format("dddd, Do MMM YYYY")}</span>
+
           <div className={css.searchBar}>
             <BiSearch size={20} />
             <input type="text" placeholder="Search" />
           </div>
+
           <div className={css.profile}>
             <img src="./profile.png" alt="person image" />
             <div className={css.details}>
@@ -36,9 +43,11 @@ const Layout = () => {
           </div>
 
 
-          </div>
-          <div className={css.content}>
-            <Outlet/>
+        </div>
+
+
+        <div className={css.content}>
+          <Outlet />
         </div>
       </div>
     </div>
